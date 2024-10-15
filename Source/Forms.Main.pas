@@ -108,7 +108,8 @@ var
   LIniFile: TIniFile;
   LDriver: string;
 begin
-  LIniFile := TIniFile.create(ChangeFileExt(Application.ExeName, '.ini'));
+  LIniFile := TIniFile.create(ExtractFilePath(Application.ExeName)+
+    'MSSQL_FireDAC_TestConnection.ini');
   try
     ConnectionStringEdit.Text := LIniFile.ReadString('Connection', 'ConnectionString', '');
     UpdateParamsList;

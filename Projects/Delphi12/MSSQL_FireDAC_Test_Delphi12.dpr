@@ -22,7 +22,7 @@
 {  limitations under the License.                                              }
 {                                                                              }
 {******************************************************************************}
-program MSSQL_FireDAC_TestConnection;
+program MSSQL_FireDAC_Test_Delphi12;
 
 uses
   Vcl.Forms,
