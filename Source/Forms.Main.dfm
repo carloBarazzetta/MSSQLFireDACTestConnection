@@ -9,10 +9,13 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OldCreateOrder = True
+  Position = poScreenCenter
   OnCreate = FormCreate
   DesignSize = (
     854
     415)
+  PixelsPerInch = 96
   TextHeight = 13
   object ParamsLabel: TLabel
     Left = 8
@@ -45,7 +48,6 @@ object MainForm: TMainForm
     EditLabel.Height = 13
     EditLabel.Caption = 'ConnectionString'
     TabOrder = 0
-    Text = ''
     OnChange = ConnectionStringEditChange
   end
   object ConnectButton: TButton
@@ -88,7 +90,6 @@ object MainForm: TMainForm
     EditLabel.Height = 13
     EditLabel.Caption = 'User Name'
     TabOrder = 4
-    Text = ''
     OnChange = UserNameEditChange
   end
   object PasswordEdit: TLabeledEdit
@@ -101,7 +102,6 @@ object MainForm: TMainForm
     EditLabel.Height = 13
     EditLabel.Caption = 'Password'
     TabOrder = 5
-    Text = ''
     OnChange = PasswordEditChange
   end
   object ParamsMemo: TMemo

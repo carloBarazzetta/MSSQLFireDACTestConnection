@@ -71,19 +71,24 @@ begin
 
   if LCustomDriver <> '' then
     FDPhysMSSQLDriverLink.ODBCDriver := LCustomDriver;
+  Screen.cursor := crHourGlass;
   try
-    if Assigned(FDConnection.ConnectionIntf) then
-      FDConnection.ConnectionIntf.ForceDisconnect;
-    FDConnection.Connected := True;
-    if FDConnection.Connected then
-      StatusBar.SimpleText := 'Connected'
-    else
+    try
+      if Assigned(FDConnection.ConnectionIntf) then
+        FDConnection.ConnectionIntf.ForceDisconnect;
+        FDConnection.Connected := True;
+      if FDConnection.Connected then
+        StatusBar.SimpleText := 'Connected'
+      else
+        StatusBar.SimpleText := 'Connection Error';
+      FDConnection.GetInfoReport(ReportMemo.Lines);
+    except
       StatusBar.SimpleText := 'Connection Error';
-    FDConnection.GetInfoReport(ReportMemo.Lines);
-  except
-    StatusBar.SimpleText := 'Connection Error';
-    FDConnection.GetInfoReport(ReportMemo.Lines);
-    raise;
+      FDConnection.GetInfoReport(ReportMemo.Lines);
+      raise;
+    end;
+  finally
+    Screen.cursor := crHourGlass;
   end;
 end;
 
